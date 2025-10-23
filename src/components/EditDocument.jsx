@@ -231,5 +231,5 @@ Ut enim ad minim veniam, quis nostrud exercitation ullamco laboratori.`);
         <div className="absolute left-[-4px] top-32 w-[4px] h-[40px] bg-gray-800 rounded-l"></div>
       </div>
     </div>
-  );
+  )
 }

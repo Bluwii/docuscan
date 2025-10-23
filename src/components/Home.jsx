@@ -119,114 +119,115 @@ export default function Home({
               </div>
             </div>
 
-            {/* Search Bar */}
+            {/* Search Bar with View Toggle */}
             <div className="px-5 py-3 bg-white border-b border-gray-200">
-              <div className="relative border border-gray-200 rounded-lg">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
-                <input
-                  type="text"
-                  placeholder="Search"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2 bg-gray-100 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-gray-300"
-                />
-              </div>
-            </div>
-
-            {/* Filters and View Toggle */}
-            <div className="px-5 py-3 bg-white border-b border-gray-200">
-              <div className="flex items-center justify-between">
-                <div className="flex gap-2 relative">
-                  {/* Folder Dropdown */}
-                  <div className="relative">
-                    <button 
-                      onClick={() => {
-                        setShowFolderDropdown(!showFolderDropdown);
-                        setShowSortDropdown(false);
-                      }}
-                      className="px-3 py-1.5 bg-white border border-gray-300 rounded-lg text-[12px] font-medium hover:bg-gray-50 transition-colors flex items-center gap-1"
-                    >
-                      {selectedFolder}
-                      <ChevronDown className="w-4 h-4" />
-                    </button>
-                    
-                    {showFolderDropdown && (
-                      <div className="absolute top-full left-0 mt-1 w-40 bg-white border border-gray-300 rounded-lg shadow-lg z-10">
-                        {folders.map((folder) => (
-                          <button
-                            key={folder.id}
-                            onClick={() => handleFolderSelect(folder.name)}
-                            className={`w-full text-left px-3 py-2 text-sm hover:bg-gray-100 transition-colors ${
-                              selectedFolder === folder.name ? 'bg-gray-100 font-medium' : ''
-                            } ${
-                              folder === folders[0] ? 'rounded-t-lg' : 
-                              folder === folders[folders.length - 1] ? 'rounded-b-lg' : ''
-                            }`}
-                          >
-                            <div className="flex items-center gap-2">
-                              <Folder className="w-4 h-4 text-gray-600" />
-                              {folder.name}
-                            </div>
-                          </button>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-
-                  {/* Sort Dropdown */}
-                  <div className="relative">
-                    <button 
-                      onClick={() => {
-                        setShowSortDropdown(!showSortDropdown);
-                        setShowFolderDropdown(false);
-                      }}
-                      className="px-3 py-1.5 bg-white border border-gray-300 rounded-lg text-[12px] font-medium hover:bg-gray-50 transition-colors flex items-center gap-1"
-                    >
-                      {selectedSort}
-                      <ChevronDown className="w-4 h-4" />
-                    </button>
-                    
-                    {showSortDropdown && (
-                      <div className="absolute top-full left-0 mt-1 w-40 bg-white border border-gray-300 rounded-lg shadow-lg z-10">
-                        {sortOptions.map((sort) => (
-                          <button
-                            key={sort}
-                            onClick={() => handleSortSelect(sort)}
-                            className={`w-full text-left px-3 py-2 text-sm hover:bg-gray-100 transition-colors ${
-                              selectedSort === sort ? 'bg-gray-100 font-medium' : ''
-                            } ${
-                              sort === sortOptions[0] ? 'rounded-t-lg' : 
-                              sort === sortOptions[sortOptions.length - 1] ? 'rounded-b-lg' : ''
-                            }`}
-                          >
-                            {sort}
-                          </button>
-                        ))}
-                      </div>
-                    )}
-                  </div>
+              <div className="flex items-center gap-3">
+                {/* Search Input */}
+                <div className="flex-1 relative">
+                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
+                  <input
+                    type="text"
+                    placeholder="Search"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="w-full pl-10 pr-4 py-2 bg-gray-100 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-gray-300"
+                  />
                 </div>
                 
                 {/* View Toggle Buttons */}
-                <div className="flex gap-1">
+                <div className="flex gap-1 bg-gray-100 rounded-lg p-1">
                   <button
                     onClick={() => setViewMode('grid')}
                     className={`p-2 rounded-lg transition-colors ${
-                      viewMode === 'grid' ? 'bg-gray-200' : 'hover:bg-gray-100'
+                      viewMode === 'grid' ? 'bg-white shadow-sm' : 'hover:bg-gray-200'
                     }`}
                     title="Grid View"
                   >
-                    <Grid className="w-5 h-5 text-gray-700" />
+                    <Grid className="w-4 h-4 text-gray-700" />
                   </button>
                   <button
                     onClick={() => setViewMode('list')}
                     className={`p-2 rounded-lg transition-colors ${
-                      viewMode === 'list' ? 'bg-gray-200' : 'hover:bg-gray-100'
+                      viewMode === 'list' ? 'bg-white shadow-sm' : 'hover:bg-gray-200'
                     }`}
                     title="List View"
                   >
-                    <List className="w-5 h-5 text-gray-700" />
+                    <List className="w-4 h-4 text-gray-700" />
                   </button>
+                </div>
+              </div>
+            </div>
+
+            {/* Filters Section */}
+            <div className="px-5 py-3 bg-white border-b border-gray-200">
+              <div className="flex gap-2 relative">
+                {/* Folder Dropdown */}
+                <div className="relative">
+                  <button 
+                    onClick={() => {
+                      setShowFolderDropdown(!showFolderDropdown);
+                      setShowSortDropdown(false);
+                    }}
+                    className="px-3 py-1.5 bg-white border border-gray-300 rounded-lg text-[12px] font-medium hover:bg-gray-50 transition-colors flex items-center gap-1"
+                  >
+                    {selectedFolder}
+                    <ChevronDown className="w-4 h-4" />
+                  </button>
+                  
+                  {showFolderDropdown && (
+                    <div className="absolute top-full left-0 mt-1 w-40 bg-white border border-gray-300 rounded-lg shadow-lg z-10">
+                      {folders.map((folder) => (
+                        <button
+                          key={folder.id}
+                          onClick={() => handleFolderSelect(folder.name)}
+                          className={`w-full text-left px-3 py-2 text-sm hover:bg-gray-100 transition-colors ${
+                            selectedFolder === folder.name ? 'bg-gray-100 font-medium' : ''
+                          } ${
+                            folder === folders[0] ? 'rounded-t-lg' : 
+                            folder === folders[folders.length - 1] ? 'rounded-b-lg' : ''
+                          }`}
+                        >
+                          <div className="flex items-center gap-2">
+                            <Folder className="w-4 h-4 text-gray-600" />
+                            {folder.name}
+                          </div>
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                </div>
+
+                {/* Sort Dropdown */}
+                <div className="relative">
+                  <button 
+                    onClick={() => {
+                      setShowSortDropdown(!showSortDropdown);
+                      setShowFolderDropdown(false);
+                    }}
+                    className="px-3 py-1.5 bg-white border border-gray-300 rounded-lg text-[12px] font-medium hover:bg-gray-50 transition-colors flex items-center gap-1"
+                  >
+                    {selectedSort}
+                    <ChevronDown className="w-4 h-4" />
+                  </button>
+                  
+                  {showSortDropdown && (
+                    <div className="absolute top-full left-0 mt-1 w-40 bg-white border border-gray-300 rounded-lg shadow-lg z-10">
+                      {sortOptions.map((sort) => (
+                        <button
+                          key={sort}
+                          onClick={() => handleSortSelect(sort)}
+                          className={`w-full text-left px-3 py-2 text-sm hover:bg-gray-100 transition-colors ${
+                            selectedSort === sort ? 'bg-gray-100 font-medium' : ''
+                          } ${
+                            sort === sortOptions[0] ? 'rounded-t-lg' : 
+                            sort === sortOptions[sortOptions.length - 1] ? 'rounded-b-lg' : ''
+                          }`}
+                        >
+                          {sort}
+                        </button>
+                      ))}
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
@@ -272,6 +273,7 @@ export default function Home({
                       {currentDocuments.map((doc) => (
                         <div
                           key={doc.id}
+                          onClick={() => onNavigateToDocumentView(doc)}
                           className="bg-white border border-gray-200 rounded-xl p-3 hover:shadow-md transition-shadow cursor-pointer"
                         >
                           <div className="flex flex-col items-center text-center">
