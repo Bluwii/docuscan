@@ -9,5 +9,5 @@ export default defineConfig({
     tailwindcss(),
     react(),
   ],
-  base: 'https://github.com/Bluwii/docuscan',
+  base: '/docuscan/',
 })
