@@ -1,6 +1,6 @@
 {
   "name": "docuscan",
-  "private": false,
+  "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
@@ -9,7 +9,6 @@
     "lint": "eslint .",
     "preview": "vite preview"
   },
-  "homepage": "https://github.com/Bluwii/docuscan",
   "dependencies": {
     "@tailwindcss/vite": "^4.1.15",
     "lucide-react": "^0.546.0",

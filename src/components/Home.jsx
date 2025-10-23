@@ -252,7 +252,7 @@ export default function Home({
                           className="bg-white border border-gray-200 rounded-xl p-4 hover:shadow-md transition-shadow cursor-pointer"
                         >
                           <div className="flex items-start gap-3">
-                            <div className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <div className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center">
                               {getFileIcon(doc.type)}
                             </div>
                             <div className="flex-1 min-w-0">
